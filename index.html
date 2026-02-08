@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./scripts/components.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>FOUC with Custom Elements</h1>
+    </header>
+
+    <app-breadcrumbs class="breadcrumbs">
+      <a href="#">Home</a>
+      <a href="#">FOUC with Custom Elements</a>
+    </app-breadcrumbs>
+
+    <main>
+      <aside>
+        <nav-menu></nav-menu>
+      </aside>
+
+      <div class="content">
+        <h2>Taming the Flash of Unstyled Content (FOUC)</h2>
+        <p>
+          Welcome to a practical exploration of FOUC — that delightful moment when your custom elements appear briefly as unstyled, broken text before the custom elements are fully defined and styled.
+        </p>
+        <section style="margin-top: 2rem">
+          <h3>What's the Deal with FOUC?</h3>
+          <p>
+            When you use custom elements, there's a race condition between HTML parsing, JavaScript execution, and style application. Sometimes the browser renders your custom element before it's been defined, resulting in that ugly, fleeting moment of "what is this nonsense on my screen?"
+          </p>
+          <p>
+            This site explores different strategies to minimize or eliminate FOUC. Navigate the pages using the menu to see various approaches in action.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>About This Page</h3>
+          <p>
+            <strong>Fair warning:</strong> This page does <em>not</em> use FOUC prevention logic. In fact, the component definitions have been <em>deliberately delayed</em> so you can actually witness the FOUC in action.
+          </p>
+          <p>
+            Check the other pages via the navigation menu to see how we can prevent this mess.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>Navigation</h3>
+          <p>
+            Use the menu on the left to explore different approaches:
+          </p>
+          <ul>
+            <li><strong>With FOUC (current):</strong> The unvarnished truth</li>
+            <li><strong>Without FOUC:</strong> A more civilized approach</li>
+            <li><strong>Without FOUC - Injection:</strong> For dynamically added content</li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>The Goal</h3>
+          <p>
+            By the end of this experience, you'll understand why preventing FOUC matters for user experience and have concrete strategies to apply in your own projects. Plus, you'll have a newfound appreciation for the word "rendering."
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p style="margin: 0">
+        © 2026 Layout Component Demo. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Old CSS Solution</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./scripts/components.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+
+    <style>
+      /* The old, simple CSS solution - hides undefined components */
+      :not(:defined) {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Old CSS Solution</h1>
+    </header>
+
+    <app-breadcrumbs class="breadcrumbs">
+      <a href="#">Home</a>
+      <a href="#">Old CSS Solution</a>
+    </app-breadcrumbs>
+
+    <main>
+      <aside>
+        <nav-menu></nav-menu>
+      </aside>
+
+      <div class="content">
+        <h2>The Original CSS Solution</h2>
+        <p>
+          This page demonstrates the classic FOUC prevention approach that has
+          been popular for years. It's wonderfully simple: just hide all
+          undefined custom elements with CSS. That's it!
+        </p>
+
+        <section style="margin-top: 2rem">
+          <h3>How It Works</h3>
+          <p>
+            This solution uses a single CSS rule to target any custom element
+            that hasn't been defined yet:
+          </p>
+          <pre
+            style="
+              background: #f5f5f5;
+              padding: 1rem;
+              border-radius: 4px;
+              overflow-x: auto;
+              font-size: 0.9em;
+            "
+          ><code>:not(:defined) {
+  visibility: hidden;
+}</code></pre>
+          <p>
+            Once the JavaScript defines a custom element, it gains the
+            <code>:defined</code> pseudo-class, and the selector no longer
+            matches, making it visible.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>Pros & Cons</h3>
+          <dl style="margin-top: 1rem">
+            <dt style="font-weight: bold; margin-top: 0.5rem">Pros</dt>
+            <dd>✓ Incredibly simple—just one line of CSS</dd>
+            <dd>✓ Zero JavaScript required</dd>
+            <dd>✓ Works immediately without any setup</dd>
+            <dd>✓ Extremely performant</dd>
+            <dt style="font-weight: bold; margin-top: 0.5rem">Cons</dt>
+            <dd>
+              ✗ Creates layout shifts—the element reserves space but is
+              invisible initially, causing content to jump when it loads
+            </dd>
+            <dd>
+              ✗ Silent failures—if a component fails to load, it stays hidden
+              forever
+            </dd>
+            <dd>
+              ✗ Accessibility issues—<code>visibility: hidden</code> removes
+              content from the accessibility tree, hiding it from screen readers
+            </dd>
+            <dd>
+              ✗ No timeout fallback—users could see a blank space indefinitely
+              if something goes wrong
+            </dd>
+            <dd>
+              ✗ If you are using undefined custom elements for styling, they will never be shown.
+            </dd>
+          </dl>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>When to Use This</h3>
+          <p>This approach is useful when:</p>
+          <ul>
+            <li>
+              You have complete control over all custom elements on the page
+            </li>
+            <li>You're confident components will load successfully</li>
+            <li>You don't need dynamic component injection</li>
+            <li>Minimal layout shift is acceptable for your use case</li>
+          </ul>
+          <p style="margin-top: 1rem; font-style: italic; color: #666">
+            For most modern applications, consider the JavaScript or newer CSS
+            solutions instead, as they handle edge cases better and provide more
+            robust fallbacks.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>Comparison with Other Solutions</h3>
+          <p style="margin-top: 1rem">
+            <strong>vs. JavaScript Solution:</strong> The JS solution prevents
+            layout shift by using <code>opacity</code> and waits for actual
+            component registration.
+          </p>
+          <p style="margin-top: 1rem">
+            <strong>vs. Modern CSS Solution:</strong> The modern approach
+            combines CSS animations with custom properties for a timeout
+            fallback and better accessibility.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p style="margin: 0">
+        © 2026 Layout Component Demo. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

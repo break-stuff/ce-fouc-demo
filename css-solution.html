@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./scripts/components.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+    <style>
+      /* must define property to work properly for all browsers */
+      @property --wc-loaded {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+      }
+
+      body {
+        /* start timeout regardless if there are undefined components */
+        animation: showBody 0s linear 200ms forwards;
+
+        /* if there are undefined components, hide until defined or 100ms - whichever comes first */
+        &:has(:not(:defined)) {
+          opacity: var(--wc-loaded, 0);
+        }
+      }
+
+      /* update variable to prevent opactity flash for subsequent component loads */
+      @keyframes showBody {
+        to {
+          --wc-loaded: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>CSS Solution</h1>
+    </header>
+    <some-test></some-test>
+
+    <app-breadcrumbs class="breadcrumbs">
+      <a href="#">Home</a>
+      <a href="#">CSS Solution</a>
+    </app-breadcrumbs>
+
+    <main>
+      <aside>
+        <nav-menu></nav-menu>
+      </aside>
+
+      <div class="content">
+        <h2>CSS-Based FOUC Prevention</h2>
+        <p>
+          This page uses a pure CSS solution to prevent FOUC. It leverages CSS custom properties and animations to hide the page until all custom elements are defined, with a built-in 200ms timeout.
+        </p>
+
+        <section style="margin-top: 2rem">
+          <h3>How It Works</h3>
+          <p>
+            The page uses CSS <code>@property</code>, <code>:has(:not(:defined))</code> selector, and CSS animations to elegantly prevent FOUC. The body starts with <code>opacity: 0</code> if undefined components exist, then a 200ms animation reveals it regardless.
+          </p>
+          <ul>
+            <li>Defines a custom CSS property <code>--wc-loaded</code></li>
+            <li>Uses <code>:has(:not(:defined))</code> to detect undefined components</li>
+            <li>CSS animation automatically triggers after 200ms</li>
+            <li>No JavaScript required for the core functionality</li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>Pros & Cons</h3>
+          <dl style="margin-top: 1rem">
+            <dt style="font-weight: bold; margin-top: 0.5rem">Pros</dt>
+            <dd>✓ Pure CSS solution—no JavaScript overhead</dd>
+            <dd>✓ Works even if JS parsing is delayed</dd>
+            <dd>✓ Minimal code footprint</dd>
+            <dd>✓ Always shows content after timeout</dd>
+            <dt style="font-weight: bold; margin-top: 0.5rem">Cons</dt>
+            <dd>✗ Requires browser support for <a href="https://caniuse.com/css-has" target="_blank" rel="noopener noreferrer">:has()</a> and <a href="https://caniuse.com/mdn-css_at-rules_property" target="_blank" rel="noopener noreferrer">@property</a></dd>
+          </dl>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>Code Pattern</h3>
+          <pre
+            style="
+              background: #f5f5f5;
+              padding: 1rem;
+              border-radius: 4px;
+              overflow-x: auto;
+              font-size: 0.9em;
+            "
+          ><code>@property --wc-loaded {
+  syntax: "&lt;number&gt;";
+  inherits: true;
+  initial-value: 0;
+}
+
+body {
+  animation: showBody 0s linear 200ms forwards;
+  
+  &amp;:has(:not(:defined)) {
+    opacity: var(--wc-loaded, 0);
+  }
+}
+
+@keyframes showBody {
+  to { --wc-loaded: 1; }
+}</code></pre>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p style="margin: 0">
+        © 2026 Layout Component Demo. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

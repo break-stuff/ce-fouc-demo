@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./scripts/components.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+    <style>
+      /* Visually block initial render as components get defined */
+      body:not(.wc-loaded) {
+        opacity: 0;
+      }
+    </style>
+    <script type="module">
+      (() => {
+        // Select all undefined custom elements on the page and wait for them to be loaded.
+        // Once they are all loaded, add the `wc-loaded` class to the body to make it visible again.
+        Promise.allSettled(
+          [...document.querySelectorAll(":not(:defined)")].map((component) => {
+            return customElements.whenDefined(component.localName);
+          }),
+        ).then(() => document.body.classList.add("wc-loaded"));
+
+        // Add fallback to add the `wc-loaded` class to the body to make it visible after 200ms.
+        // This prevents the user from being blocked from using your application in case a component fails to load
+        // or other undefined elements are being used on the page.
+        setTimeout(() => document.body.classList.add("wc-loaded"), 200);
+      })();
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>JS Solution</h1>
+    </header>
+
+    <app-breadcrumbs class="breadcrumbs">
+      <a href="#">Home</a>
+      <a href="#">JS Solution</a>
+    </app-breadcrumbs>
+
+    <main>
+      <aside>
+        <nav-menu></nav-menu>
+      </aside>
+
+      <div class="content">
+        <h2>JavaScript-Based FOUC Prevention</h2>
+        <p>
+          This page uses a JavaScript-driven approach to prevent FOUC. It detects all undefined custom elements and waits for them to be defined before showing the page.
+        </p>
+
+        <section style="margin-top: 2rem">
+          <h3>How It Works</h3>
+          <p>
+            The page uses <code>Promise.allSettled()</code> to wait for all custom elements (found via the <code>:not(:defined)</code> selector) to be defined. During this time, the body is hidden with <code>opacity: 0</code>. Once components are defined, the <code>wc-loaded</code> class is added to make the page visible.
+          </p>
+          <ul>
+            <li>Detects undefined custom elements on the page</li>
+            <li>Waits for each component to be registered with <code>customElements.whenDefined()</code></li>
+            <li>Includes a 200ms fallback timeout for safety</li>
+            <li>Shows the page once all components are ready</li>
+          </ul>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>Pros & Cons</h3>
+          <dl style="margin-top: 1rem">
+            <dt style="font-weight: bold; margin-top: 0.5rem">Pros</dt>
+            <dd>✓ Waits for actual component registration</dd>
+            <dd>✓ Flexible timeout fallback</dd>
+            <dd>✓ Works with dynamically loaded components</dd>
+            <dt style="font-weight: bold; margin-top: 0.5rem">Cons</dt>
+            <dd>✗ Requires JavaScript to execute</dd>
+            <dd>✗ Adds complexity to the HTML</dd>
+            <dd>✗ Brief flash possible if JS parsing is delayed</dd>
+          </dl>
+        </section>
+
+        <section style="margin-top: 2rem">
+          <h3>Code Pattern</h3>
+          <pre
+            style="
+              background: #f5f5f5;
+              padding: 1rem;
+              border-radius: 4px;
+              overflow-x: auto;
+              font-size: 0.9em;
+            "
+          ><code>&lt;style&gt;
+  /* Visually block initial render as components get defined */
+  body:not(.wc-loaded) {
+    opacity: 0;
+  }
+&lt;/style&gt;
+&lt;script type="module"&gt;
+  (() =&gt; {
+    // Select all undefined custom elements on the page and wait for them to be loaded.
+    // Once they are all loaded, add the `wc-loaded` class to the body to make it visible again.
+    Promise.allSettled(
+      [...document.querySelectorAll(":not(:defined)")].map((component) =&gt; {
+        return customElements.whenDefined(component.localName);
+      }),
+    ).then(() =&gt; document.body.classList.add("wc-loaded"));
+
+    // Add fallback to add the `wc-loaded` class to the body to make it visible after 200ms.
+    // This prevents the user from being blocked from using your application in case a component fails to load
+    // or other undefined elements are being used on the page.
+    setTimeout(() =&gt; document.body.classList.add("wc-loaded"), 200);
+  })();
+&lt;/script&gt;</code></pre>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p style="margin: 0">
+        © 2026 Layout Component Demo. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
