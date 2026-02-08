@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>FOUC Demo - Baseline</title>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Baseline FOUC demo showing unstyled custom elements before definitions load."
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="./scripts/components.js"></script>
@@ -10,7 +14,7 @@
   </head>
   <body>
     <header>
-      <h1>FOUC with Custom Elements</h1>
+      <h1>Baseline FOUC Demo</h1>
     </header>
 
     <app-breadcrumbs class="breadcrumbs">
@@ -24,9 +28,9 @@
       </aside>
 
       <div class="content">
-        <h2>Reducing Flash of Unstyled Content (FOUC) for Custom Elements</h2>
+        <h2>FOUC in the Wild</h2>
         <p>
-          Welcome to a practical exploration of FOUC — that brief moment when custom elements appear as unstyled, broken text before they’re fully defined and styled on page load.
+          This baseline page intentionally shows the flash of unstyled content that can happen when custom elements render before their definitions and styles arrive.
         </p>
         <section style="margin-top: 2rem">
           <h3>What's the Deal with FOUC?</h3>

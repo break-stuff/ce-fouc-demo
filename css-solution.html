@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>FOUC Demo - CSS Timeout Solution</title>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Pure CSS FOUC prevention using :has(), @property, and a short reveal timeout."
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="./scripts/components.js"></script>
@@ -35,7 +39,7 @@
   </head>
   <body>
     <header>
-      <h1>CSS Solution</h1>
+      <h1>CSS Timeout Solution</h1>
     </header>
     <some-test></some-test>
 
@@ -50,9 +54,9 @@
       </aside>
 
       <div class="content">
-        <h2>CSS-Based FOUC Prevention</h2>
+        <h2>CSS-Only FOUC Prevention</h2>
         <p>
-          This page uses a pure CSS solution to prevent FOUC. It leverages CSS custom properties and animations to hide the page until all custom elements are defined, with a built-in 200ms timeout.
+          This page uses a pure CSS approach that hides the document until custom elements are defined, then reveals content after a short 200ms timeout.
         </p>
 
         <section style="margin-top: 2rem">

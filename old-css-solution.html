@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Old CSS Solution</title>
+    <title>FOUC Demo - Legacy CSS Hide</title>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Legacy CSS :not(:defined) approach to hide undefined custom elements."
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="./scripts/components.js"></script>
@@ -17,7 +21,7 @@
   </head>
   <body>
     <header>
-      <h1>Old CSS Solution</h1>
+      <h1>Legacy CSS Hide</h1>
     </header>
 
     <app-breadcrumbs class="breadcrumbs">
@@ -31,11 +35,10 @@
       </aside>
 
       <div class="content">
-        <h2>The Original CSS Solution</h2>
+        <h2>The Classic :not(:defined) Approach</h2>
         <p>
-          This page demonstrates the classic FOUC prevention approach that has
-          been popular for years. It's wonderfully simple: just hide all
-          undefined custom elements with CSS. That's it!
+          This page demonstrates the original CSS-only method: hide all
+          undefined custom elements until they are defined and become visible.
         </p>
 
         <section style="margin-top: 2rem">

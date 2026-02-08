@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>FOUC Demo - JS Wait Strategy</title>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="JavaScript wait-for-definitions strategy to prevent FOUC with a timeout fallback."
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="./scripts/components.js"></script>
@@ -32,7 +36,7 @@
   </head>
   <body>
     <header>
-      <h1>JS Solution</h1>
+      <h1>JS Wait Strategy</h1>
     </header>
 
     <app-breadcrumbs class="breadcrumbs">
@@ -46,9 +50,9 @@
       </aside>
 
       <div class="content">
-        <h2>JavaScript-Based FOUC Prevention</h2>
+        <h2>JavaScript Wait-For-Definitions</h2>
         <p>
-          This page uses a JavaScript-driven approach to prevent FOUC. It detects all undefined custom elements and waits for them to be defined before showing the page.
+          This page prevents FOUC by waiting on undefined custom elements and revealing the page once they are defined, with a short fallback timeout.
         </p>
 
         <section style="margin-top: 2rem">
