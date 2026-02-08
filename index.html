@@ -24,9 +24,9 @@
       </aside>
 
       <div class="content">
-        <h2>Taming the Flash of Unstyled Content (FOUC)</h2>
+        <h2>Reducing Flash of Unstyled Content (FOUC) for Custom Elements</h2>
         <p>
-          Welcome to a practical exploration of FOUC — that delightful moment when your custom elements appear briefly as unstyled, broken text before the custom elements are fully defined and styled.
+          Welcome to a practical exploration of FOUC — that brief moment when custom elements appear as unstyled, broken text before they’re fully defined and styled on page load.
         </p>
         <section style="margin-top: 2rem">
           <h3>What's the Deal with FOUC?</h3>
@@ -34,14 +34,14 @@
             When you use custom elements, there's a race condition between HTML parsing, JavaScript execution, and style application. Sometimes the browser renders your custom element before it's been defined, resulting in that ugly, fleeting moment of "what is this nonsense on my screen?"
           </p>
           <p>
-            This site explores different strategies to minimize or eliminate FOUC. Navigate the pages using the menu to see various approaches in action.
+            This site explores different strategies to minimize or eliminate FOUC on initial page load. Use the menu to compare approaches side by side.
           </p>
         </section>
 
         <section style="margin-top: 2rem">
           <h3>About This Page</h3>
           <p>
-            <strong>Fair warning:</strong> This page does <em>not</em> use FOUC prevention logic. In fact, the component definitions have been <em>deliberately delayed</em> so you can actually witness the FOUC in action.
+            <strong>Fair warning:</strong> This page does <em>not</em> use FOUC prevention logic. In fact, the component definitions in this demo have been <em>deliberately delayed</em> to emphasize the FOUC in action.
           </p>
           <p>
             Check the other pages via the navigation menu to see how we can prevent this mess.
@@ -51,12 +51,13 @@
         <section style="margin-top: 2rem">
           <h3>Navigation</h3>
           <p>
-            Use the menu on the left to explore different approaches:
+            Use the menu on the left to explore the different approaches:
           </p>
           <ul>
-            <li><strong>With FOUC (current):</strong> The unvarnished truth</li>
-            <li><strong>Without FOUC:</strong> A more civilized approach</li>
-            <li><strong>Without FOUC - Injection:</strong> For dynamically added content</li>
+            <li><strong>With FOUC (current):</strong> The baseline problem</li>
+            <li><strong>Old CSS Solution:</strong> The classic <code>:not(:defined)</code> visibility trick</li>
+            <li><strong>JS Solution:</strong> Wait for definitions with a timeout fallback</li>
+            <li><strong>CSS Solution:</strong> Modern CSS timeout with <code>:has()</code> + <code>@property</code></li>
           </ul>
         </section>
 
